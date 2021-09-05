@@ -27,9 +27,9 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Group_ID }) |
+            @Html.ActionLink("Edit", "EditGroup", new { id = item.Group_ID }) |
             @Html.ActionLink("Details", "DetailsGroup", new { id = item.Group_ID, name = item.Name }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Group_ID })
+            @Html.ActionLink("Delete", "DeleteGroup", new { id = item.Group_ID })
         </td>
     </tr>
 }

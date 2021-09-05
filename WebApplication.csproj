@@ -179,6 +179,10 @@
     <Content Include="Views\Home\Courses.cshtml" />
     <Content Include="Views\Home\DetailsCourse.cshtml" />
     <Content Include="Views\Home\DetailsGroup.cshtml" />
+    <Content Include="Views\Home\EditGroup.cshtml" />
+    <Content Include="Views\Home\EditStudent.cshtml" />
+    <Content Include="Views\Home\DeleteGroup.cshtml" />
+    <Content Include="Views\Home\DeleteGroupError.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

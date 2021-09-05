@@ -1,0 +1,23 @@
+﻿@model WebApplication.Models.Group
+
+@{
+    ViewBag.Title = "EditGroup";
+}
+
+<h2>Group @Model.Name</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.Group_ID)
+        <p>
+            @Html.LabelFor(m => m.Name, "Group name")
+            <br />
+            @Html.EditorFor(m => m.Name)
+        </p>
+        <p>
+            <input type="submit" value="Send" /> 
+        </p>
+    </fieldset>
+}
+

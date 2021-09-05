@@ -1,0 +1,27 @@
+﻿@model WebApplication.Models.Student
+
+@{
+    ViewBag.Title = "EditStudent";
+}
+
+<h2>Student @Model.First_Name @Model.Last_Name</h2>
+
+@using (Html.BeginForm())
+{
+<fieldset>
+    @Html.HiddenFor(m => m.Student_ID)
+    <p>
+        @Html.LabelFor(m => m.First_Name, "First name")
+        <br />
+        @Html.EditorFor(m => m.First_Name)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Last_Name, "Last name")
+        <br />
+        @Html.EditorFor(m => m.Last_Name)
+    </p>
+    <p>
+        <input type="submit" value="Send" />
+    </p>
+</fieldset>
+}
