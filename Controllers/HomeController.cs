@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using WebApplication.Models;
 using System.Data.Entity;
@@ -127,7 +124,7 @@ namespace WebApplication.Controllers
         {
             using (UniversityContext db = new UniversityContext())
             {
-                var students = db.Students.Include(s => s.Group).OrderBy(g => g.Group.Name).ThenBy(s => s.First_Name);
+                var students =  db.Students.Include(s => s.Group).OrderBy(g => g.Group.Name).ThenBy(s => s.First_Name);
 
                 return View(students.ToList());
             }
