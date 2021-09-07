@@ -66,10 +66,15 @@ namespace WebApplication.Controllers
         {
             using (UniversityContext db = new UniversityContext())
             {
-                db.Entry(group).State = EntityState.Modified;
-                db.SaveChanges();
-                
-                return RedirectToAction("Groups");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(group).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("Groups");
+                }
+
+                return View(group);
             }
         }
 
@@ -124,7 +129,7 @@ namespace WebApplication.Controllers
         {
             using (UniversityContext db = new UniversityContext())
             {
-                var students =  db.Students.Include(s => s.Group).OrderBy(g => g.Group.Name).ThenBy(s => s.First_Name);
+                var students =  db.Students.Include(s => s.Group).OrderBy(g => g.Group.Name).ThenBy(s => s.First_Name);            
 
                 return View(students.ToList());
             }
@@ -151,10 +156,15 @@ namespace WebApplication.Controllers
         {
             using (UniversityContext db = new UniversityContext())
             {
-                db.Entry(student).State = EntityState.Modified;
-                db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    db.Entry(student).State = EntityState.Modified;
+                    db.SaveChanges();
 
-                return RedirectToAction("Students");
+                    return RedirectToAction("Students");
+                }
+
+                return View(student);
             }
         }
     }

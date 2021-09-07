@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace WebApplication.Models
 {
@@ -15,6 +11,7 @@ namespace WebApplication.Models
         public int? Course_ID { get; set; }
         public Course Course { get; set; }
 
+        [RegularExpression(@"[A-Za-z\d-]+", ErrorMessage = "The name can contain only Latin letters or digits")]
         public string Name { get; set; }
 
         public ICollection<Student> Students { get; set; }

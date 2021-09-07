@@ -15,14 +15,22 @@
         @Html.LabelFor(m => m.First_Name, "First name")
         <br />
         @Html.EditorFor(m => m.First_Name)
+        <br />
+        @Html.ValidationMessageFor(m => m.First_Name)
     </p>
     <p>
         @Html.LabelFor(m => m.Last_Name, "Last name")
         <br />
         @Html.EditorFor(m => m.Last_Name)
+        <br />
+        @Html.ValidationMessageFor(m => m.Last_Name)
     </p>
     <p>
         <input type="submit" value="Send" />
     </p>
 </fieldset>
 }
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    }
