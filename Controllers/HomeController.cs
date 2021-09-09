@@ -95,24 +95,22 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost, ActionName("DeleteGroup")]
-        public ActionResult DeleteGroupPost(int id)
+        public ActionResult DeleteGroupPost(Group group)
         {
             using (UniversityContext db = new UniversityContext())
             {
-                Group group = db.Groups.Find(id);
-
                 if (group == null)
                 {
                     return HttpNotFound();
                 }
 
-                if (db.Students.Where(g => g.Group_ID == id).Count() > 0)
+                if (db.Students.Where(g => g.Group_ID == group.Group_ID).Count() > 0)
                 {
                     return RedirectToAction("DeleteGroupError");
                 }
                 else
                 {
-                    db.Groups.Remove(group);
+                    db.Entry(group).State = EntityState.Deleted;
                     db.SaveChanges();
 
                     return RedirectToAction("Groups");
