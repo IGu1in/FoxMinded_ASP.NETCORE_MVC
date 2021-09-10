@@ -94,8 +94,8 @@ namespace WebApplication.Controllers
             }
         }
 
-        [HttpPost, ActionName("DeleteGroup")]
-        public ActionResult DeleteGroupPost(Group group)
+        [HttpPost]
+        public ActionResult DeleteGroup(Group group)
         {
             using (UniversityContext db = new UniversityContext())
             {
