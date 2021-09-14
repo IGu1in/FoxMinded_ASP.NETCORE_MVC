@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebApplication.Models.Group>
+
+@{
+    ViewBag.Title = "DetailsCourse";
+}
+
+<h2>DetailsCourse @ViewBag.Name</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Course name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @ViewBag.Name
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditGroup", "Groups", new { id = item.Group_ID }, null) |
+                @Html.ActionLink("Details", "DetailsGroup", "Groups", new { id = item.Group_ID, name = item.Name }, null) |
+                @Html.ActionLink("Delete", "DeleteGroup", "Groups", new { id = item.Group_ID }, null)
+            </td>
+        </tr>
+    }
+
+</table>

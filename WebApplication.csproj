@@ -127,7 +127,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,6 +186,15 @@
     <Content Include="Views\Home\EditStudent.cshtml" />
     <Content Include="Views\Home\DeleteGroup.cshtml" />
     <Content Include="Views\Home\DeleteGroupError.cshtml" />
+    <Content Include="Views\Courses\Courses.cshtml" />
+    <Content Include="Views\Groups\Groups.cshtml" />
+    <Content Include="Views\Groups\DetailsGroup.cshtml" />
+    <Content Include="Views\Courses\DetailsCourse.cshtml" />
+    <Content Include="Views\Groups\EditGroup.cshtml" />
+    <Content Include="Views\Groups\DeleteGroup.cshtml" />
+    <Content Include="Views\Groups\DeleteGroupError.cshtml" />
+    <Content Include="Views\Students\Students.cshtml" />
+    <Content Include="Views\Students\EditStudent.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

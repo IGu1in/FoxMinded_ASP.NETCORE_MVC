@@ -1,0 +1,22 @@
+﻿@model WebApplication.Models.Group
+
+@{
+    ViewBag.Title = "DeleteGroup";
+}
+
+<h2>DeleteGroup</h2>
+<dl>
+    <dt>
+        Name
+    </dt>
+    <dd>
+        @Html.DisplayFor(m => m.Name)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Group_ID)
+    <input type="submit" value="Delete" />
+}
+
