@@ -5,18 +5,18 @@ using WebApplication.Models;
 
 namespace WebApplication.Repository
 {
-    public static class StudentRepository 
+    public class StudentRepository : IRepository<Student>
     {
-        public static void Create(Student student)
+        public void Create(Student student)
         {
             using (UniversityContext db = new UniversityContext())
             {
-                    db.Students.Add(student);
-                    db.SaveChanges();
+                db.Students.Add((Student)student);
+                db.SaveChanges();
             }
         }
 
-        public static List<Student> Get()
+        public List<Student> Get()
         {
             using (UniversityContext db = new UniversityContext())
             {
@@ -26,20 +26,20 @@ namespace WebApplication.Repository
             }
         }
 
-        public static void Edit(Student student)
+        public void Edit(Student student)
         {
             using (UniversityContext db = new UniversityContext())
-            {
-                db.Entry(student).State = EntityState.Modified;
+            {              
+                db.Entry((Student)student).State = EntityState.Modified;
                 db.SaveChanges();
             }
         }
 
-        public static void Delete(Student student)
+        public void Delete(Student student)
         {
             using (UniversityContext db = new UniversityContext())
             {
-                db.Entry(student).State = EntityState.Deleted;
+                db.Entry((Student)student).State = EntityState.Deleted;
                 db.SaveChanges();
             }
         }

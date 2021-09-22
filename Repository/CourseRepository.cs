@@ -5,9 +5,9 @@ using WebApplication.Models;
 
 namespace WebApplication.Repository
 {
-    public static class CourseRepository 
+    public class CourseRepository : IRepository<Course>
     {
-        public static void Create(Course course)
+        public void Create(Course course)
         {
             using (UniversityContext db = new UniversityContext())
             {
@@ -16,7 +16,7 @@ namespace WebApplication.Repository
             }
         }
 
-        public static List<Course> Get()
+        public List<Course> Get()
         {
             using (UniversityContext db = new UniversityContext())
             {
@@ -26,7 +26,7 @@ namespace WebApplication.Repository
             }
         }
 
-        public static void Edit(Course course)
+        public void Edit(Course course)
         {
             using (UniversityContext db = new UniversityContext())
             {               
@@ -35,7 +35,7 @@ namespace WebApplication.Repository
             }
         }
 
-        public static void Delete(Course course)
+        public void Delete(Course course)
         {
             using (UniversityContext db = new UniversityContext())
             {

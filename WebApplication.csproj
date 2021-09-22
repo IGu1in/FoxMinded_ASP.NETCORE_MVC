@@ -124,6 +124,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\IServiceCourse.cs" />
+    <Compile Include="Application\IServiceGroup.cs" />
+    <Compile Include="Application\IServiceStudent.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -143,6 +146,7 @@
     <Compile Include="Application\StudentService.cs" />
     <Compile Include="Repository\CourseRepository.cs" />
     <Compile Include="Repository\GroupRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
   </ItemGroup>
   <ItemGroup>

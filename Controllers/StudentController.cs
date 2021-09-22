@@ -8,7 +8,8 @@ namespace WebApplication.Controllers
     {
         public ActionResult Students()
         {
-            var students = StudentService.Get();
+            var service = new StudentService();
+            var students = service.Get();
 
             return View(students);
         }
@@ -16,7 +17,8 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult EditStudent(int id)
         {
-            var students = StudentService.Get();
+            var service = new StudentService();
+            var students = service.Get();
             var student = students.Find(s => s.Student_ID == id);
 
             if (student != null)
@@ -32,7 +34,8 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                StudentService.Edit(student);
+                var service = new StudentService();
+                service.Edit(student);
 
                 return RedirectToAction("Students");
             }

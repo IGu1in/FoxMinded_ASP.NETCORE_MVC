@@ -2,7 +2,7 @@
 
 namespace WebApplication.Models
 {
-    public class Student
+    public class Student 
     {
         [Key]
         public int Student_ID { get; set; }
@@ -11,9 +11,9 @@ namespace WebApplication.Models
         public Group Group { get; set; }
 
         [RegularExpression(@"[A-Za-z-]+", ErrorMessage = "The name can contain only Latin letters")]
-        public string First_Name { get; set; }
+        public string FirstName { get; set; }
 
         [RegularExpression(@"[A-Za-z-]+", ErrorMessage = "The name can contain only Latin letters")]
-        public string Last_Name { get; set; }
+        public string LastName { get; set; }
     }
 }

@@ -5,9 +5,9 @@ using WebApplication.Models;
 
 namespace WebApplication.Repository
 {
-    public static class GroupRepository 
+    public class GroupRepository : IRepository<Group>
     {
-        public static void Create(Group group)
+        public void Create(Group group)
         {
             using (UniversityContext db = new UniversityContext())
             {
@@ -16,7 +16,7 @@ namespace WebApplication.Repository
             }
         }
 
-        public static List<Group> Get()
+        public List<Group> Get()
         {
             using (UniversityContext db = new UniversityContext())
             {
@@ -26,7 +26,7 @@ namespace WebApplication.Repository
             }
         }
 
-        public static void Edit(Group group)
+        public void Edit(Group group)
         {
             using (UniversityContext db = new UniversityContext())
             {             
@@ -35,7 +35,7 @@ namespace WebApplication.Repository
             }
         }
 
-        public static void Delete(Group group)
+        public void Delete(Group group)
         {
             using (UniversityContext db = new UniversityContext())
             {

@@ -7,15 +7,17 @@ namespace WebApplication.Controllers
     {
         public ActionResult Courses()
         {
-            var courses = CourseService.Get();
+            var service = new CourseService();
+            var courses = service.Get();
 
             return View(courses);
         }
 
         public ActionResult DetailsCourse(int id, string name)
         {
+            var service = new CourseService();
             ViewBag.Name = name;
-            var groups = CourseService.Details(id);
+            var groups = service.Details(id);
 
             return View(groups);
         }

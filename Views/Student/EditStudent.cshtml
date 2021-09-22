@@ -4,7 +4,7 @@
     ViewBag.Title = "EditStudent";
 }
 
-<h2>Student @Model.First_Name @Model.Last_Name</h2>
+<h2>Student @Model.FirstName @Model.LastName</h2>
 
 @using (Html.BeginForm())
 {
@@ -12,18 +12,18 @@
         @Html.HiddenFor(m => m.Student_ID)
         @Html.HiddenFor(m => m.Group_ID)
         <p>
-            @Html.LabelFor(m => m.First_Name, "First name")
+            @Html.LabelFor(m => m.FirstName, "First name")
             <br />
-            @Html.EditorFor(m => m.First_Name)
+            @Html.EditorFor(m => m.FirstName)
             <br />
-            @Html.ValidationMessageFor(m => m.First_Name)
+            @Html.ValidationMessageFor(m => m.FirstName)
         </p>
         <p>
-            @Html.LabelFor(m => m.Last_Name, "Last name")
+            @Html.LabelFor(m => m.LastName, "Last name")
             <br />
-            @Html.EditorFor(m => m.Last_Name)
+            @Html.EditorFor(m => m.LastName)
             <br />
-            @Html.ValidationMessageFor(m => m.Last_Name)
+            @Html.ValidationMessageFor(m => m.LastName)
         </p>
         <p>
             <input type="submit" value="Send" />

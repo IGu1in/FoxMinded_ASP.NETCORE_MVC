@@ -9,15 +9,17 @@ namespace WebApplication.Controllers
     {
         public ActionResult Groups()
         {
-            var groups = GroupService.Get();
+            var service = new GroupService();
+            var groups = service.Get();
 
             return View(groups);
         }
 
         public ActionResult DetailsGroup(int id, string name)
         {
+            var service = new GroupService();
             ViewBag.Name = name;
-            var students = GroupService.Details(id);
+            var students = service.Details(id);
 
             return View(students);
         }
@@ -25,7 +27,8 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult EditGroup(int id)
         {
-            var groups = GroupService.Get();
+            var service = new GroupService();
+            var groups = service.Get();
             var group = groups.Find(g => g.Group_ID == id);
 
             if (group != null)
@@ -41,7 +44,8 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                GroupService.Edit(group);
+                var service = new GroupService();
+                service.Edit(group);
 
                 return RedirectToAction("Groups");
             }
@@ -52,7 +56,8 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult DeleteGroup(int id)
         {
-            var groups = GroupService.Get();
+            var service = new GroupService();
+            var groups = service.Get();
             var group = groups.Find(g => g.Group_ID == id);
 
             if (group != null)
@@ -66,18 +71,20 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult DeleteGroup(Group group)
         {
+            var serviceGroup = new GroupService();
+            var serviceStudent = new StudentService();
             if (group == null)
             {
                 return HttpNotFound();
             }
 
-            if (StudentService.Get().Where(g => g.Group_ID == group.Group_ID).Count() > 0)
+            if (serviceStudent.Get().Where(g => g.Group_ID == group.Group_ID).Count() > 0)
             {
                 return RedirectToAction("DeleteGroupError");
             }
             else
             {
-                GroupService.Delete(group);
+                serviceGroup.Delete(group);
 
                 return RedirectToAction("Groups");
             }

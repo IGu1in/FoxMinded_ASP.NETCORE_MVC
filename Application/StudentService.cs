@@ -1,21 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using WebApplication.Application;
 using WebApplication.Models;
 
 namespace WebApplication.Repository.Application
 {
-    public class StudentService
+    public class StudentService : IServiceStudent
     {
-        public static List<Student> Get()
+        public List<Student> Get()
         {
-            var students = StudentRepository.Get().OrderBy(g => g.Group.Name).ThenBy(s => s.First_Name).ToList();
+            var repository = new StudentRepository();
+            var students = repository.Get().OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName).ToList();
 
             return students;
         }
 
-        public static void Edit(Student student)
+        public void Edit(Student student)
         {
-            StudentRepository.Edit(student);
+            var repository = new StudentRepository();
+            repository.Edit(student);
         }
     }
 }
