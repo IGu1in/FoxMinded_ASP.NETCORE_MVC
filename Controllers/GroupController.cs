@@ -1,15 +1,28 @@
-﻿using System.Linq;
+﻿using Ninject;
+using System.Linq;
 using System.Web.Mvc;
 using WebApplication.Models;
+using WebApplication.Application;
 using WebApplication.Repository.Application;
 
 namespace WebApplication.Controllers
 {
     public class GroupController : Controller
     {
+        IServiceGroup service;
+        IServiceStudent serviceStudent;
+
+        public GroupController()
+        {
+            IKernel ninjectKernel = new StandardKernel();
+            ninjectKernel.Bind<IServiceGroup>().To<GroupService>();
+            service = ninjectKernel.Get<IServiceGroup>();
+            ninjectKernel.Bind<IServiceStudent>().To<StudentService>();
+            serviceStudent = ninjectKernel.Get<IServiceStudent>();
+        }
+
         public ActionResult Groups()
         {
-            var service = new GroupService();
             var groups = service.Get();
 
             return View(groups);
@@ -17,7 +30,6 @@ namespace WebApplication.Controllers
 
         public ActionResult DetailsGroup(int id, string name)
         {
-            var service = new GroupService();
             ViewBag.Name = name;
             var students = service.Details(id);
 
@@ -27,7 +39,6 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult EditGroup(int id)
         {
-            var service = new GroupService();
             var groups = service.Get();
             var group = groups.Find(g => g.Group_ID == id);
 
@@ -44,7 +55,6 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var service = new GroupService();
                 service.Edit(group);
 
                 return RedirectToAction("Groups");
@@ -56,7 +66,6 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult DeleteGroup(int id)
         {
-            var service = new GroupService();
             var groups = service.Get();
             var group = groups.Find(g => g.Group_ID == id);
 
@@ -71,8 +80,6 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult DeleteGroup(Group group)
         {
-            var serviceGroup = new GroupService();
-            var serviceStudent = new StudentService();
             if (group == null)
             {
                 return HttpNotFound();
@@ -84,7 +91,7 @@ namespace WebApplication.Controllers
             }
             else
             {
-                serviceGroup.Delete(group);
+                service.Delete(group);
 
                 return RedirectToAction("Groups");
             }

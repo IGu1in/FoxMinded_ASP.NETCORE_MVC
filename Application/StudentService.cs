@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Ninject;
+using System.Collections.Generic;
 using System.Linq;
 using WebApplication.Application;
 using WebApplication.Models;
@@ -7,9 +8,17 @@ namespace WebApplication.Repository.Application
 {
     public class StudentService : IServiceStudent
     {
+        IRepository<Student> repository;
+
+        public StudentService()
+        {
+            IKernel ninjectKernel = new StandardKernel();
+            ninjectKernel.Bind<IRepository<Student>>().To<StudentRepository>();
+            repository = ninjectKernel.Get<IRepository<Student>>();
+        }
+
         public List<Student> Get()
         {
-            var repository = new StudentRepository();
             var students = repository.Get().OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName).ToList();
 
             return students;
@@ -17,7 +26,6 @@ namespace WebApplication.Repository.Application
 
         public void Edit(Student student)
         {
-            var repository = new StudentRepository();
             repository.Edit(student);
         }
     }

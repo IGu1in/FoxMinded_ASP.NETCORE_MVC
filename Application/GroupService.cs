@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Ninject;
+using System.Collections.Generic;
 using System.Linq;
 using WebApplication.Application;
 using WebApplication.Models;
@@ -7,16 +8,26 @@ namespace WebApplication.Repository.Application
 {
     public class GroupService : IServiceGroup
     {
+        IRepository<Group> repository;
+        IRepository<Student> repositoryStudent;
+
+        public GroupService()
+        {
+            IKernel ninjectKernel = new StandardKernel();
+            ninjectKernel.Bind<IRepository<Group>>().To<GroupRepository>();
+            repository = ninjectKernel.Get<IRepository<Group>>();
+            ninjectKernel.Bind<IRepository<Student>>().To<StudentRepository>();
+            repositoryStudent = ninjectKernel.Get<IRepository<Student>>();
+        }
+
         public List<Group> Get()
         {
-            var repository = new GroupRepository();
             var groups = repository.Get().OrderBy(g => g.Name).ToList();
 
             return groups;
         }
         public List<Student> Details(int id)
         {
-            var repositoryStudent = new StudentRepository();
             var students = repositoryStudent.Get().Where(g => g.Group_ID == id).OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName).ToList();
 
             return students;
@@ -24,13 +35,11 @@ namespace WebApplication.Repository.Application
 
         public void Edit(Group group)
         {
-            var repository = new GroupRepository();
             repository.Edit(group);
         }
 
         public void Delete(Group group)
         {
-            var repository = new GroupRepository();
             repository.Delete(group);
         }
     }
