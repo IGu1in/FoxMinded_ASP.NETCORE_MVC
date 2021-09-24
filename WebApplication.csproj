@@ -136,9 +136,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\ICourseService.cs" />
-    <Compile Include="Application\IGroupService.cs" />
-    <Compile Include="Application\IStudentService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -148,18 +145,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\UniversityContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Application\CourseService.cs" />
-    <Compile Include="Application\GroupService.cs" />
-    <Compile Include="Application\StudentService.cs" />
-    <Compile Include="Repository\CourseRepository.cs" />
-    <Compile Include="Repository\GroupRepository.cs" />
-    <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Repository\StudentRepository.cs" />
     <Compile Include="Util\NinjectRegistrations.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +208,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebApplication.Application\WebApplication.Application.csproj">
+      <Project>{d173ff11-092c-41bd-bec5-9062c8379e8d}</Project>
+      <Name>WebApplication.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApplication.Models\WebApplication.Models.csproj">
+      <Project>{dbd9a168-309d-44fa-9051-35883dc4efd4}</Project>
+      <Name>WebApplication.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApplication.Repository\WebApplication.Repository.csproj">
+      <Project>{cf9377b5-0c56-441f-94f1-2e8d1aae7b80}</Project>
+      <Name>WebApplication.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
