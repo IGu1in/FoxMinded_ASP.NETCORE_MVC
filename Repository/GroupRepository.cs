@@ -9,7 +9,7 @@ namespace WebApplication.Repository
     {
         public void Create(Group group)
         {
-            using (UniversityContext db = new UniversityContext())
+            using (var db = new UniversityContext())
             {
                 db.Groups.Add(group);
                 db.SaveChanges();
@@ -18,7 +18,7 @@ namespace WebApplication.Repository
 
         public List<Group> Get()
         {
-            using (UniversityContext db = new UniversityContext())
+            using (var db = new UniversityContext())
             {
                 var groups = db.Groups.Include(c => c.Course).ToList();
 
@@ -28,7 +28,7 @@ namespace WebApplication.Repository
 
         public void Edit(Group group)
         {
-            using (UniversityContext db = new UniversityContext())
+            using (var db = new UniversityContext())
             {             
                 db.Entry(group).State = EntityState.Modified;
                 db.SaveChanges();
@@ -37,7 +37,7 @@ namespace WebApplication.Repository
 
         public void Delete(Group group)
         {
-            using (UniversityContext db = new UniversityContext())
+            using (var db = new UniversityContext())
             {
                 db.Entry(group).State = EntityState.Deleted;
                 db.SaveChanges();

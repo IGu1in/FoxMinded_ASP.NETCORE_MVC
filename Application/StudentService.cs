@@ -1,20 +1,17 @@
-﻿using Ninject;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using WebApplication.Application;
 using WebApplication.Models;
 
 namespace WebApplication.Repository.Application
 {
-    public class StudentService : IServiceStudent
+    public class StudentService : IStudentService
     {
         IRepository<Student> repository;
 
-        public StudentService()
+        public StudentService(IRepository<Student> repStudent)
         {
-            IKernel ninjectKernel = new StandardKernel();
-            ninjectKernel.Bind<IRepository<Student>>().To<StudentRepository>();
-            repository = ninjectKernel.Get<IRepository<Student>>();
+            repository = repStudent;
         }
 
         public List<Student> Get()

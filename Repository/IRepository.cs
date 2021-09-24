@@ -2,7 +2,7 @@
 
 namespace WebApplication.Repository
 {
-    interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class
     {
         void Create(T obj);
         List<T> Get();

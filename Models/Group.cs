@@ -6,9 +6,9 @@ namespace WebApplication.Models
     public class Group 
     {
         [Key]
-        public int Group_ID { get; set; }
+        public int GroupId { get; set; }
 
-        public int? Course_ID { get; set; }
+        public int? CourseId { get; set; }
         public Course Course { get; set; }
 
         [RegularExpression(@"[A-Za-z\d-]+", ErrorMessage = "The name can contain only Latin letters or digits")]

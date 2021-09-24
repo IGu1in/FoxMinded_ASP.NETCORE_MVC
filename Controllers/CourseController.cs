@@ -1,19 +1,15 @@
-﻿using Ninject;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using WebApplication.Application;
-using WebApplication.Repository.Application;
 
 namespace WebApplication.Controllers
 {
     public class CourseController : Controller
     {
-        IServiceCourse service;
+        private ICourseService service;
 
-        public CourseController()
+        public CourseController(ICourseService courseServ)
         {
-            IKernel ninjectKernel = new StandardKernel();
-            ninjectKernel.Bind<IServiceCourse>().To<CourseService>();
-            service = ninjectKernel.Get<IServiceCourse>();
+            service = courseServ;
         }
 
         public ActionResult Courses()

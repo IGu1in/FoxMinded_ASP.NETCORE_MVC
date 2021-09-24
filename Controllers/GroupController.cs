@@ -1,24 +1,19 @@
-﻿using Ninject;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using WebApplication.Models;
 using WebApplication.Application;
-using WebApplication.Repository.Application;
 
 namespace WebApplication.Controllers
 {
     public class GroupController : Controller
     {
-        IServiceGroup service;
-        IServiceStudent serviceStudent;
+        IGroupService service;
+        IStudentService serviceStudent;
 
-        public GroupController()
+        public GroupController(IGroupService groupServ, IStudentService studentServ)
         {
-            IKernel ninjectKernel = new StandardKernel();
-            ninjectKernel.Bind<IServiceGroup>().To<GroupService>();
-            service = ninjectKernel.Get<IServiceGroup>();
-            ninjectKernel.Bind<IServiceStudent>().To<StudentService>();
-            serviceStudent = ninjectKernel.Get<IServiceStudent>();
+            service = groupServ;
+            serviceStudent = studentServ;
         }
 
         public ActionResult Groups()
@@ -40,7 +35,7 @@ namespace WebApplication.Controllers
         public ActionResult EditGroup(int id)
         {
             var groups = service.Get();
-            var group = groups.Find(g => g.Group_ID == id);
+            var group = groups.Find(g => g.GroupId == id);
 
             if (group != null)
             {
@@ -67,7 +62,7 @@ namespace WebApplication.Controllers
         public ActionResult DeleteGroup(int id)
         {
             var groups = service.Get();
-            var group = groups.Find(g => g.Group_ID == id);
+            var group = groups.Find(g => g.GroupId == id);
 
             if (group != null)
             {
@@ -85,7 +80,7 @@ namespace WebApplication.Controllers
                 return HttpNotFound();
             }
 
-            if (serviceStudent.Get().Where(g => g.Group_ID == group.Group_ID).Count() > 0)
+            if (serviceStudent.Get().Where(g => g.GroupId == group.GroupId).Count() > 0)
             {
                 return RedirectToAction("DeleteGroupError");
             }

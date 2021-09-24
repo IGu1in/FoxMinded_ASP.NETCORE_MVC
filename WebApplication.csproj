@@ -136,9 +136,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\IServiceCourse.cs" />
-    <Compile Include="Application\IServiceGroup.cs" />
-    <Compile Include="Application\IServiceStudent.cs" />
+    <Compile Include="Application\ICourseService.cs" />
+    <Compile Include="Application\IGroupService.cs" />
+    <Compile Include="Application\IStudentService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -160,6 +160,7 @@
     <Compile Include="Repository\GroupRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
+    <Compile Include="Util\NinjectRegistrations.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\studentdb.mdf" />

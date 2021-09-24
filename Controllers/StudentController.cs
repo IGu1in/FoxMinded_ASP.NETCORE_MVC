@@ -1,20 +1,16 @@
-﻿using Ninject;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using WebApplication.Models;
 using WebApplication.Application;
-using WebApplication.Repository.Application;
 
 namespace WebApplication.Controllers
 {
     public class StudentController : Controller
     {
-        IServiceStudent service;
+        IStudentService service;
 
-        public StudentController()
+        public StudentController(IStudentService studentServ)
         {
-            IKernel ninjectKernel = new StandardKernel();
-            ninjectKernel.Bind<IServiceStudent>().To<StudentService>();
-            service = ninjectKernel.Get<IServiceStudent>();
+            service = studentServ;
         }
 
         public ActionResult Students()
@@ -28,7 +24,7 @@ namespace WebApplication.Controllers
         public ActionResult EditStudent(int id)
         {
             var students = service.Get();
-            var student = students.Find(s => s.Student_ID == id);
+            var student = students.Find(s => s.StudentId == id);
 
             if (student != null)
             {

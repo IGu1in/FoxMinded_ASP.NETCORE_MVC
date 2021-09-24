@@ -9,7 +9,7 @@ namespace WebApplication.Repository
     {
         public void Create(Course course)
         {
-            using (UniversityContext db = new UniversityContext())
+            using (var db = new UniversityContext())
             {
                     db.Courses.Add(course);
                     db.SaveChanges();
@@ -18,7 +18,7 @@ namespace WebApplication.Repository
 
         public List<Course> Get()
         {
-            using (UniversityContext db = new UniversityContext())
+            using (var db = new UniversityContext())
             {
                 var courses = db.Courses.ToList();
 
@@ -28,7 +28,7 @@ namespace WebApplication.Repository
 
         public void Edit(Course course)
         {
-            using (UniversityContext db = new UniversityContext())
+            using (var db = new UniversityContext())
             {               
                     db.Entry(course).State = EntityState.Modified;
                     db.SaveChanges();
@@ -37,7 +37,7 @@ namespace WebApplication.Repository
 
         public void Delete(Course course)
         {
-            using (UniversityContext db = new UniversityContext())
+            using (var db = new UniversityContext())
             {
                 db.Entry(course).State = EntityState.Deleted;
                 db.SaveChanges();

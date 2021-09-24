@@ -3,7 +3,7 @@ using WebApplication.Models;
 
 namespace WebApplication.Application
 {
-    interface IServiceStudent
+    public interface IStudentService
     {
         List<Student> Get();
         void Edit(Student student);

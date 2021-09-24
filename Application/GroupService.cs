@@ -1,23 +1,19 @@
-﻿using Ninject;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using WebApplication.Application;
 using WebApplication.Models;
 
 namespace WebApplication.Repository.Application
 {
-    public class GroupService : IServiceGroup
+    public class GroupService : IGroupService
     {
         IRepository<Group> repository;
         IRepository<Student> repositoryStudent;
 
-        public GroupService()
+        public GroupService(IRepository<Group> repGroup, IRepository<Student> repStudent)
         {
-            IKernel ninjectKernel = new StandardKernel();
-            ninjectKernel.Bind<IRepository<Group>>().To<GroupRepository>();
-            repository = ninjectKernel.Get<IRepository<Group>>();
-            ninjectKernel.Bind<IRepository<Student>>().To<StudentRepository>();
-            repositoryStudent = ninjectKernel.Get<IRepository<Student>>();
+            repository = repGroup;
+            repositoryStudent = repStudent;
         }
 
         public List<Group> Get()
@@ -28,7 +24,7 @@ namespace WebApplication.Repository.Application
         }
         public List<Student> Details(int id)
         {
-            var students = repositoryStudent.Get().Where(g => g.Group_ID == id).OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName).ToList();
+            var students = repositoryStudent.Get().Where(g => g.GroupId == id).OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName).ToList();
 
             return students;
         }

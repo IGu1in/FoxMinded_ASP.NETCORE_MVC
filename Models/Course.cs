@@ -6,7 +6,7 @@ namespace WebApplication.Models
     public class Course
     {
         [Key]
-        public int Course_ID { get; set; }
+        public int CourseId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 

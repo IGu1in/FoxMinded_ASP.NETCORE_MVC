@@ -3,7 +3,7 @@ using WebApplication.Models;
 
 namespace WebApplication.Application
 {
-    interface IServiceGroup
+    public interface IGroupService
     {
         List<Group> Get();
         List<Student> Details(int id);

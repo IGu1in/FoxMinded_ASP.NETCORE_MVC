@@ -1,23 +1,19 @@
-﻿using Ninject;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using WebApplication.Application;
 using WebApplication.Models;
 
 namespace WebApplication.Repository.Application
 {
-    public class CourseService : IServiceCourse
+    public class CourseService : ICourseService
     {
         IRepository<Course> repository;
         IRepository<Group> repositoryGroup;
 
-        public CourseService()
+        public CourseService(IRepository<Course> repCourse, IRepository<Group> repGroup)
         {
-            IKernel ninjectKernel = new StandardKernel();
-            ninjectKernel.Bind<IRepository<Course>>().To<CourseRepository>();
-            repository = ninjectKernel.Get<IRepository<Course>>();
-            ninjectKernel.Bind<IRepository<Group>>().To<GroupRepository>();
-            repositoryGroup = ninjectKernel.Get<IRepository<Group>>();
+            repository = repCourse;
+            repositoryGroup = repGroup;
         }
 
         public List<Course> Get()
@@ -29,7 +25,7 @@ namespace WebApplication.Repository.Application
 
         public List<Group> Details(int id)
         {
-            var groups = repositoryGroup.Get().Where(g => g.Course_ID == id).OrderBy(g => g.Name).ToList();
+            var groups = repositoryGroup.Get().Where(g => g.CourseId == id).OrderBy(g => g.Name).ToList();
 
             return groups;
         }
