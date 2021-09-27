@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WebApplication.Application;
 using WebApplication.Models;
+using WebApplication.Repository;
 
-namespace WebApplication.Repository.Application
+namespace WebApplication.Application
 {
     public class StudentService : IStudentService
     {
@@ -16,9 +16,7 @@ namespace WebApplication.Repository.Application
 
         public List<Student> Get()
         {
-            var students = repository.Get().OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName).ToList();
-
-            return students;
+            return repository.Get().OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName).ToList();
         }
 
         public void Edit(Student student)

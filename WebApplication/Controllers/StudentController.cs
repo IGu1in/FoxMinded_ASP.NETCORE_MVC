@@ -8,9 +8,9 @@ namespace WebApplication.Controllers
     {
         IStudentService service;
 
-        public StudentController(IStudentService studentServ)
+        public StudentController(IStudentService studentService)
         {
-            service = studentServ;
+            service = studentService;
         }
 
         public ActionResult Students()

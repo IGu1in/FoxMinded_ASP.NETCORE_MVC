@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication.csproj", "{EBA505E7-3FF2-4EFE-A7D8-727B88B3EFA5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{EBA505E7-3FF2-4EFE-A7D8-727B88B3EFA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Application", "..\WebApplication.Application\WebApplication.Application.csproj", "{D173FF11-092C-41BD-BEC5-9062C8379E8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Application", "WebApplication.Application\WebApplication.Application.csproj", "{D173FF11-092C-41BD-BEC5-9062C8379E8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Repository", "..\WebApplication.Repository\WebApplication.Repository.csproj", "{CF9377B5-0C56-441F-94F1-2E8D1AAE7B80}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Repository", "WebApplication.Repository\WebApplication.Repository.csproj", "{CF9377B5-0C56-441F-94F1-2E8D1AAE7B80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Models", "..\WebApplication.Models\WebApplication.Models.csproj", "{DBD9A168-309D-44FA-9051-35883DC4EFD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Models", "WebApplication.Models\WebApplication.Models.csproj", "{DBD9A168-309D-44FA-9051-35883DC4EFD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

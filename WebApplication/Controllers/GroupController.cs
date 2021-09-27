@@ -10,10 +10,10 @@ namespace WebApplication.Controllers
         IGroupService service;
         IStudentService serviceStudent;
 
-        public GroupController(IGroupService groupServ, IStudentService studentServ)
+        public GroupController(IGroupService groupService, IStudentService studentService)
         {
-            service = groupServ;
-            serviceStudent = studentServ;
+            service = groupService;
+            serviceStudent = studentService;
         }
 
         public ActionResult Groups()

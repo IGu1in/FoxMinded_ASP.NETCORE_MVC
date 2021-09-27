@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WebApplication.Application;
 using WebApplication.Models;
+using WebApplication.Repository;
 
-namespace WebApplication.Repository.Application
+namespace WebApplication.Application
 {
     public class CourseService : ICourseService
     {
@@ -18,9 +18,7 @@ namespace WebApplication.Repository.Application
 
         public List<Course> Get()
         {
-            var courses = repository.Get().OrderBy(c => c.Name).ToList();
-
-            return courses;
+            return repository.Get().OrderBy(c => c.Name).ToList();
         }
 
         public List<Group> Details(int id)

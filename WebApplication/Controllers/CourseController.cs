@@ -7,9 +7,9 @@ namespace WebApplication.Controllers
     {
         private ICourseService service;
 
-        public CourseController(ICourseService courseServ)
+        public CourseController(ICourseService courseService)
         {
-            service = courseServ;
+            service = courseService;
         }
 
         public ActionResult Courses()
