@@ -30,7 +30,7 @@ namespace WebApplication.Repository
         {
             using (var db = new UniversityContext())
             {              
-                db.Entry((Student)student).State = EntityState.Modified;
+                db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
             }
         }
@@ -39,7 +39,7 @@ namespace WebApplication.Repository
         {
             using (var db = new UniversityContext())
             {
-                db.Entry((Student)student).State = EntityState.Deleted;
+                db.Entry(student).State = EntityState.Deleted;
                 db.SaveChanges();
             }
         }

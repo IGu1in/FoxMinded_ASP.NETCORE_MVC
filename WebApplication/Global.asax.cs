@@ -1,9 +1,11 @@
+using AutoMapper;
 using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Mvc;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebApplication.Repository.Profiles;
 using WebApplication.Util;
 
 namespace WebApplication
@@ -21,6 +23,11 @@ namespace WebApplication
             var kernel = new StandardKernel(registrations);
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
             kernel.Unbind<ModelValidatorProvider>();
+
+            var config = new MapperConfiguration(cfg => {
+                cfg.AddProfile<SqlToDomainProfile>();
+            });
+            var mapper = new Mapper(config);
         }
     }
 }

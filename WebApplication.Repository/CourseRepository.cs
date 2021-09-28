@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using WebApplication.Models;
@@ -7,6 +8,13 @@ namespace WebApplication.Repository
 {
     public class CourseRepository : IRepository<Course>
     {
+        private IMapper _mapper;
+
+        public CourseRepository(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         public void Create(Course course)
         {
             using (var db = new UniversityContext())
@@ -16,13 +24,13 @@ namespace WebApplication.Repository
             }
         }
 
-        public List<Course> Get()
+        public async Task<List<Course>> Get()
         {
             using (var db = new UniversityContext())
             {
-                var courses = db.Courses.ToList();
+                var courses = await db.Courses.ToList();
 
-                return courses;
+                return _mapper.Map<Course>(courses);
             }
         }
 

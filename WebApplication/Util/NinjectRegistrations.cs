@@ -2,7 +2,6 @@
 using WebApplication.Application;
 using WebApplication.Models;
 using WebApplication.Repository;
-using WebApplication.Repository.Application;
 
 namespace WebApplication.Util
 {
