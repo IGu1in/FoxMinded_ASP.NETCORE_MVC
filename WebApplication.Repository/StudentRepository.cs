@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
 using System.Data.Entity;
 using System.Linq;
 using WebApplication.Models;
@@ -7,6 +7,13 @@ namespace WebApplication.Repository
 {
     public class StudentRepository : IRepository<Student>
     {
+        private IMapper _mapper;
+
+        public StudentRepository(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         public void Create(Student student)
         {
             using (var db = new UniversityContext())
@@ -16,13 +23,23 @@ namespace WebApplication.Repository
             }
         }
 
-        public List<Student> Get()
+        public Student Get()
         {
             using (var db = new UniversityContext())
             {
-                var students = db.Students.Include(g => g.Group).ToList();
+                var students = db.Students.Include(g => g.Group).OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName);
 
-                return students;
+                return _mapper.Map<Student>(students);
+            }
+        }
+
+        public Student Get(int id)
+        {
+            using (var db = new UniversityContext())
+            {
+                var students = db.Students.Include(g => g.Group).Where(g => g.GroupId == id).OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName);
+
+                return _mapper.Map<Student>(students);
             }
         }
 

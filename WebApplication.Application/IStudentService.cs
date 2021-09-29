@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using WebApplication.Models;
+﻿using WebApplication.Models;
 
 namespace WebApplication.Application
 {
     public interface IStudentService
     {
-        List<Student> Get();
+        Student Get();
+        Student Get(int id);
         void Edit(Student student);
     }
 }

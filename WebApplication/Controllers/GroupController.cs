@@ -34,8 +34,7 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult EditGroup(int id)
         {
-            var groups = service.Get();
-            var group = groups.Find(g => g.GroupId == id);
+            var group = service.Get(id);
 
             if (group != null)
             {
@@ -61,8 +60,7 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult DeleteGroup(int id)
         {
-            var groups = service.Get();
-            var group = groups.Find(g => g.GroupId == id);
+            var group = service.Get(id);
 
             if (group != null)
             {
@@ -80,7 +78,7 @@ namespace WebApplication.Controllers
                 return HttpNotFound();
             }
 
-            if (serviceStudent.Get().Where(g => g.GroupId == group.GroupId).Count() > 0)
+            if (serviceStudent.Get(group.GroupId) != null)
             {
                 return RedirectToAction("DeleteGroupError");
             }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication.Repository.Models
 {
-    class Group
+    public class Group
     {
         [Key]
         public int GroupId { get; set; }

@@ -23,8 +23,7 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult EditStudent(int id)
         {
-            var students = service.Get();
-            var student = students.Find(s => s.StudentId == id);
+            var student = service.Get(id);
 
             if (student != null)
             {

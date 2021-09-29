@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using WebApplication.Models;
+﻿using WebApplication.Models;
 using WebApplication.Repository;
 
 namespace WebApplication.Application
@@ -16,14 +14,14 @@ namespace WebApplication.Application
             repositoryGroup = repGroup;
         }
 
-        public List<Course> Get()
+        public Course Get()
         {
-            return repository.Get().OrderBy(c => c.Name).ToList();
+            return repository.Get();
         }
 
-        public List<Group> Details(int id)
+        public Group Details(int id)
         {
-            var groups = repositoryGroup.Get().Where(g => g.CourseId == id).OrderBy(g => g.Name).ToList();
+            var groups = repositoryGroup.Get(id);
 
             return groups;
         }

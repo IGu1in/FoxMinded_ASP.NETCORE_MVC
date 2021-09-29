@@ -24,11 +24,21 @@ namespace WebApplication.Repository
             }
         }
 
-        public async Task<List<Course>> Get()
+        public Course Get()
         {
             using (var db = new UniversityContext())
             {
-                var courses = await db.Courses.ToList();
+                var courses =  db.Courses.OrderBy(c=>c.Name);
+
+                return _mapper.Map<Course>(courses);
+            }
+        }
+
+        public Course Get(int id)
+        {
+            using (var db = new UniversityContext())
+            {
+                var courses = db.Courses.Where(c => c.CourseId == id).OrderBy(c => c.Name);
 
                 return _mapper.Map<Course>(courses);
             }

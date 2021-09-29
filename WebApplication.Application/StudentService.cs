@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using WebApplication.Models;
+﻿using WebApplication.Models;
 using WebApplication.Repository;
 
 namespace WebApplication.Application
@@ -14,9 +12,19 @@ namespace WebApplication.Application
             repository = repStudent;
         }
 
-        public List<Student> Get()
+        public Student Get()
         {
-            return repository.Get().OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName).ToList();
+            return repository.Get();
+        }
+
+        public Student Get(int id)
+        {
+            return repository.Get(id);
+        }
+
+        public Student GetGroup(int id)
+        {
+            return repository.Get(id);
         }
 
         public void Edit(Student student)

@@ -2,7 +2,7 @@
 
 namespace WebApplication.Repository.Models
 {
-    class Student
+    public class Student
     {
         [Key]
         public int StudentId { get; set; }
