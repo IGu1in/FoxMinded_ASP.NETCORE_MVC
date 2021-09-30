@@ -24,10 +24,14 @@ namespace WebApplication
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
             kernel.Unbind<ModelValidatorProvider>();
 
-            var config = new MapperConfiguration(cfg => {
-                cfg.AddProfile<SqlToDomainProfile>();
-            });
-            var mapper = new Mapper(config);
+
+            //var config = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.AddProfile<SqlToDomainProfile>();
+            //});
+            //var mapper = new Mapper(config);
+
+
         }
     }
 }

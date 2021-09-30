@@ -1,7 +1,10 @@
-﻿using Ninject.Modules;
+﻿using AutoMapper;
+using Ninject;
+using Ninject.Modules;
 using WebApplication.Application;
 using WebApplication.Models;
 using WebApplication.Repository;
+using WebApplication.Repository.Profiles;
 
 namespace WebApplication.Util
 {
@@ -15,6 +18,14 @@ namespace WebApplication.Util
             Bind<IRepository<Course>>().To<CourseRepository>();
             Bind<IRepository<Group>>().To<GroupRepository>();
             Bind<IRepository<Student>>().To<StudentRepository>();
+
+            var mapperConfiguration = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<SqlToDomainProfile>();
+                cfg.AddProfile<DomainToSqlProfile>();
+            }
+            );
+            this.Bind<IMapper>().ToConstructor(c => new Mapper(mapperConfiguration)).InSingletonScope();
         }
     }
 }
