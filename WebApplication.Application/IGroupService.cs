@@ -5,9 +5,10 @@ namespace WebApplication.Application
 {
     public interface IGroupService
     {
-        Group Get();
-        Group Get(int id);
-        Student Details(int id);
+        List<Group> Get();
+        List<Group> Get(int id);
+        Group GetGroupById(int id);
+        List<Student> Details(int id);
         void Edit(Group group);
         void Delete(Group group);
     }

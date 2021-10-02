@@ -5,8 +5,9 @@ namespace WebApplication.Repository
     public interface IRepository<T> where T : class
     {
         void Create(T obj);
-        T Get();
-        T Get(int id);
+        List<T> Get();
+        List<T> Get(int id);
+        T GetOne(int id);
         void Edit(T obj);
         void Delete(T obj);
     }

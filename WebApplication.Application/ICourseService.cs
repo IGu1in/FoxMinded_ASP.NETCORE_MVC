@@ -5,7 +5,7 @@ namespace WebApplication.Application
 {
     public interface ICourseService
     {
-        Course Get();
-        Group Details(int id);
+        List<Course> Get();
+        List<Group> Details(int id);
     }
 }

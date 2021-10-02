@@ -34,7 +34,7 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult EditGroup(int id)
         {
-            var group = service.Get(id);
+            var group = service.GetGroupById(id);
 
             if (group != null)
             {
@@ -60,7 +60,7 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult DeleteGroup(int id)
         {
-            var group = service.Get(id);
+            var group = service.GetGroupById(id);
 
             if (group != null)
             {

@@ -1,4 +1,5 @@
-﻿using WebApplication.Models;
+﻿using System.Collections.Generic;
+using WebApplication.Models;
 using WebApplication.Repository;
 
 namespace WebApplication.Application
@@ -14,12 +15,12 @@ namespace WebApplication.Application
             repositoryGroup = repGroup;
         }
 
-        public Course Get()
+        public List<Course> Get()
         {
             return repository.Get();
         }
 
-        public Group Details(int id)
+        public List<Group> Details(int id)
         {
             var groups = repositoryGroup.Get(id);
 

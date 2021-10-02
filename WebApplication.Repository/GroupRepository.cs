@@ -24,21 +24,31 @@ namespace WebApplication.Repository
             }
         }
 
-        public Group Get()
+        public List<Group> Get()
         {
             using (var db = new UniversityContext())
             {
-                var groups = db.Groups.Include(c => c.Course).OrderBy(g=>g.Name);
+                var groups = db.Groups.Include(c => c.Course).OrderBy(g=>g.Name).ToList();
 
-                return _mapper.Map<Group>(groups);
+                return _mapper.Map<List<Group>>(groups);
             }
         }
 
-        public Group Get(int id)
+        public List<Group> Get(int id)
         {
             using (var db = new UniversityContext())
             {
                 var groups = db.Groups.Include(c => c.Course).Where(c => c.CourseId == id).OrderBy(g => g.Name);
+
+                return _mapper.Map<List<Group>>(groups);
+            }
+        }
+        
+        public Group GetOne(int id)
+        {
+            using (var db = new UniversityContext())
+            {
+                var groups = db.Groups.Include(c => c.Course).Where(c => c.GroupId == id).FirstOrDefault();
 
                 return _mapper.Map<Group>(groups);
             }

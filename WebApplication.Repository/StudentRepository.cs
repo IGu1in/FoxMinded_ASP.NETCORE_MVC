@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using WebApplication.Models;
@@ -23,21 +24,31 @@ namespace WebApplication.Repository
             }
         }
 
-        public Student Get()
+        public List<Student> Get()
         {
             using (var db = new UniversityContext())
             {
-                var students = db.Students.Include(g => g.Group).OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName);
+                var students = db.Students.Include(g => g.Group).OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName).ToList();
 
-                return _mapper.Map<Student>(students);
+                return _mapper.Map<List<Student>>(students);
             }
         }
 
-        public Student Get(int id)
+        public List<Student> Get(int id)
         {
             using (var db = new UniversityContext())
             {
                 var students = db.Students.Include(g => g.Group).Where(g => g.GroupId == id).OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName);
+
+                return _mapper.Map<List<Student>>(students);
+            }
+        } 
+        
+        public Student GetOne(int id)
+        {
+            using (var db = new UniversityContext())
+            {
+                var students = db.Students.Include(g => g.Group).Where(s => s.StudentId == id).FirstOrDefault();
 
                 return _mapper.Map<Student>(students);
             }

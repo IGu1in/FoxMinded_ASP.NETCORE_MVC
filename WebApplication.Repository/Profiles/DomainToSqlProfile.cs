@@ -7,8 +7,10 @@ namespace WebApplication.Repository.Profiles
     {
         public DomainToSqlProfile()
         {
-            CreateMap<WebApplication.Models.Course, Course>();
-            CreateMap<WebApplication.Models.Group, Group>();
+            CreateMap<WebApplication.Models.Course, Course>()
+                .ForMember(x => x.Groups, y => y.MapFrom(z => z.Groups));
+            CreateMap<WebApplication.Models.Group, Group>()
+                .ForMember(x => x.Students, y => y.MapFrom(z => z.Students)); 
             CreateMap<WebApplication.Models.Student, Student>();
         }
     }
