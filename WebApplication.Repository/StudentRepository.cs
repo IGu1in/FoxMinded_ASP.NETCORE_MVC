@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using WebApplication.Models;
+using WebApplication.Infrastructure;
 
 namespace WebApplication.Repository
 {

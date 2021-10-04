@@ -4,6 +4,7 @@ using WebApplication.Application;
 using WebApplication.Models;
 using WebApplication.Repository;
 using WebApplication.Repository.Profiles;
+using WebApplication.Infrastructure;
 
 namespace WebApplication.Util
 {

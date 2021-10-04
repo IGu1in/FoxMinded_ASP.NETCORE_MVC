@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using WebApplication.Models;
 
-namespace WebApplication.Application
+namespace WebApplication.Infrastructure
 {
     public interface ICourseService
     {

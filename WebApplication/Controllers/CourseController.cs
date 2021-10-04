@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using WebApplication.Application;
+using WebApplication.Infrastructure;
 
 namespace WebApplication.Controllers
 {

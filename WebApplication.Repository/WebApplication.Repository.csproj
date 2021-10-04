@@ -119,7 +119,6 @@
   <ItemGroup>
     <Compile Include="CourseRepository.cs" />
     <Compile Include="GroupRepository.cs" />
-    <Compile Include="IRepository.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Student.cs" />
@@ -129,6 +128,10 @@
     <Compile Include="StudentRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebApplication.Infrastructure\WebApplication.Infrastructure.csproj">
+      <Project>{c7696d9b-587d-4945-af43-5f75407c501f}</Project>
+      <Name>WebApplication.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebApplication.Models\WebApplication.Models.csproj">
       <Project>{dbd9a168-309d-44fa-9051-35883dc4efd4}</Project>
       <Name>WebApplication.Models</Name>

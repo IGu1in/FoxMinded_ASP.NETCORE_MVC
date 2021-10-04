@@ -216,6 +216,10 @@
       <Project>{d173ff11-092c-41bd-bec5-9062c8379e8d}</Project>
       <Name>WebApplication.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebApplication.Infrastructure\WebApplication.Infrastructure.csproj">
+      <Project>{c7696d9b-587d-4945-af43-5f75407c501f}</Project>
+      <Name>WebApplication.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebApplication.Models\WebApplication.Models.csproj">
       <Project>{dbd9a168-309d-44fa-9051-35883dc4efd4}</Project>
       <Name>WebApplication.Models</Name>

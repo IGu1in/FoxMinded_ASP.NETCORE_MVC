@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using WebApplication.Models;
-using WebApplication.Repository;
+using WebApplication.Infrastructure;
 
 namespace WebApplication.Application
 {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using WebApplication.Models;
-using WebApplication.Application;
+using WebApplication.Infrastructure;
 
 namespace WebApplication.Controllers
 {
