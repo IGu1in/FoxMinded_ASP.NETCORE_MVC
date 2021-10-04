@@ -6,16 +6,16 @@ namespace WebApplication.Controllers
 {
     public class StudentController : Controller
     {
-        IStudentService service;
+        private readonly IStudentService _service;
 
         public StudentController(IStudentService studentService)
         {
-            service = studentService;
+            _service = studentService;
         }
 
         public ActionResult Students()
         {
-            var students = service.Get();
+            var students = _service.Get();
 
             return View(students);
         }
@@ -23,7 +23,7 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult EditStudent(int id)
         {
-            var student = service.GetById(id);
+            var student = _service.GetById(id);
 
             if (student != null)
             {
@@ -38,7 +38,7 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                service.Edit(student);
+                _service.Edit(student);
 
                 return RedirectToAction("Students");
             }

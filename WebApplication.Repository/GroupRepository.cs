@@ -8,7 +8,7 @@ namespace WebApplication.Repository
 {
     public class GroupRepository : IRepository<Group>
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
         public GroupRepository(IMapper mapper)
         {

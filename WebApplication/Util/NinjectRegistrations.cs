@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Ninject;
 using Ninject.Modules;
 using WebApplication.Application;
 using WebApplication.Models;

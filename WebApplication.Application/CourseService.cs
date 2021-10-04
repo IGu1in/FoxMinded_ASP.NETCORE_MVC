@@ -6,23 +6,23 @@ namespace WebApplication.Application
 {
     public class CourseService : ICourseService
     {
-        IRepository<Course> repository;
-        IRepository<Group> repositoryGroup;
+        private readonly IRepository<Course> _repository;
+        private readonly IRepository<Group> _repositoryGroup;
 
         public CourseService(IRepository<Course> repCourse, IRepository<Group> repGroup)
         {
-            repository = repCourse;
-            repositoryGroup = repGroup;
+            _repository = repCourse;
+            _repositoryGroup = repGroup;
         }
 
         public List<Course> Get()
         {
-            return repository.Get();
+            return _repository.Get();
         }
 
         public List<Group> Details(int id)
         {
-            var groups = repositoryGroup.Get(id);
+            var groups = _repositoryGroup.Get(id);
 
             return groups;
         }

@@ -7,18 +7,18 @@ namespace WebApplication.Controllers
 {
     public class GroupController : Controller
     {
-        IGroupService service;
-        IStudentService serviceStudent;
+        private readonly IGroupService _service;
+        private readonly IStudentService _serviceStudent;
 
         public GroupController(IGroupService groupService, IStudentService studentService)
         {
-            service = groupService;
-            serviceStudent = studentService;
+            _service = groupService;
+            _serviceStudent = studentService;
         }
 
         public ActionResult Groups()
         {
-            var groups = service.Get();
+            var groups = _service.Get();
 
             return View(groups);
         }
@@ -26,7 +26,7 @@ namespace WebApplication.Controllers
         public ActionResult DetailsGroup(int id, string name)
         {
             ViewBag.Name = name;
-            var students = service.Details(id);
+            var students = _service.Details(id);
 
             return View(students);
         }
@@ -34,7 +34,7 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult EditGroup(int id)
         {
-            var group = service.GetGroupById(id);
+            var group = _service.GetGroupById(id);
 
             if (group != null)
             {
@@ -49,7 +49,7 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                service.Edit(group);
+                _service.Edit(group);
 
                 return RedirectToAction("Groups");
             }
@@ -60,7 +60,7 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult DeleteGroup(int id)
         {
-            var group = service.GetGroupById(id);
+            var group = _service.GetGroupById(id);
 
             if (group != null)
             {
@@ -78,13 +78,13 @@ namespace WebApplication.Controllers
                 return HttpNotFound();
             }
 
-            if (serviceStudent.Get(group.GroupId) != null)
+            if (_serviceStudent.Get(group.GroupId) != null)
             {
                 return RedirectToAction("DeleteGroupError");
             }
             else
             {
-                service.Delete(group);
+                _service.Delete(group);
 
                 return RedirectToAction("Groups");
             }

@@ -8,7 +8,7 @@ namespace WebApplication.Repository
 {
     public class StudentRepository : IRepository<Student>
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
         public StudentRepository(IMapper mapper)
         {

@@ -8,7 +8,7 @@ namespace WebApplication.Repository
 {
     public class CourseRepository : IRepository<Course>
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
         public CourseRepository(IMapper mapper)
         {

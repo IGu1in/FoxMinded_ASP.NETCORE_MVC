@@ -5,16 +5,16 @@ namespace WebApplication.Controllers
 {
     public class CourseController : Controller
     {
-        private ICourseService service;
+        private readonly ICourseService _service;
 
         public CourseController(ICourseService courseService)
         {
-            service = courseService;
+            _service = courseService;
         }
 
         public ActionResult Courses()
         {
-            var courses = service.Get();
+            var courses = _service.Get();
 
             return View(courses);
         }
@@ -22,7 +22,7 @@ namespace WebApplication.Controllers
         public ActionResult DetailsCourse(int id, string name)
         {
             ViewBag.Name = name;
-            var groups = service.Details(id);
+            var groups = _service.Details(id);
 
             return View(groups);
         }

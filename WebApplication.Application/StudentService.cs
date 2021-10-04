@@ -6,31 +6,31 @@ namespace WebApplication.Application
 {
     public class StudentService : IStudentService
     {
-        IRepository<Student> repository;
+        private readonly IRepository<Student> _repository;
 
         public StudentService(IRepository<Student> repStudent)
         {
-            repository = repStudent;
+            _repository = repStudent;
         }
 
         public List<Student> Get()
         {
-            return repository.Get();
+            return _repository.Get();
         }
 
         public List<Student> Get(int id)
         {
-            return repository.Get(id);
+            return _repository.Get(id);
         }
 
         public Student GetById(int id)
         {
-            return repository.GetOne(id);
+            return _repository.GetOne(id);
         }
 
         public void Edit(Student student)
         {
-            repository.Edit(student);
+            _repository.Edit(student);
         }
     }
 }
