@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using WebApplication.Models;
+using WebApplication.ViewModels;
 
 namespace WebApplication.Infrastructure
 {
@@ -7,5 +7,6 @@ namespace WebApplication.Infrastructure
     {
         List<Course> Get();
         List<Group> Details(int id);
+        void Create(Course course);
     }
 }

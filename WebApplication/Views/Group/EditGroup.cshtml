@@ -1,4 +1,4 @@
-﻿@model WebApplication.Models.Group
+﻿@model WebApplication.ViewModels.Group
 
 @{
     ViewBag.Title = "EditGroup";
@@ -22,4 +22,8 @@
             <input type="submit" value="Send" />
         </p>
     </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

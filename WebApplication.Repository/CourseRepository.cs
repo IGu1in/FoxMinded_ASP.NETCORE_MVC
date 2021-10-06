@@ -7,7 +7,7 @@ using WebApplication.Infrastructure;
 
 namespace WebApplication.Repository
 {
-    public class CourseRepository : IRepository<Course>
+    public class CourseRepository : IRepository<ViewModels.Course>
     {
         private readonly IMapper _mapper;
 
@@ -16,59 +16,59 @@ namespace WebApplication.Repository
             _mapper = mapper;
         }
 
-        public void Create(Course course)
+        public void Create(ViewModels.Course course)
         {
             using (var db = new UniversityContext())
             {
-                    db.Courses.Add(course);
+                    db.Courses.Add(_mapper.Map<Course>(course));
                     db.SaveChanges();
             }
         }
 
-        public List<Course> Get()
+        public List<ViewModels.Course> Get()
         {
             using (var db = new UniversityContext())
             {
                 var courses =  db.Courses.OrderBy(c=>c.Name).ToList();
 
-                return _mapper.Map<List<Course>>(courses);
+                return _mapper.Map<List<ViewModels.Course>>(courses);
             }
         }
 
-        public List<Course> Get(int id)
+        public List<ViewModels.Course> Get(int id)
         {
             using (var db = new UniversityContext())
             {
                 var courses = db.Courses.Where(c => c.CourseId == id).OrderBy(c => c.Name);
 
-                return _mapper.Map<List<Course>>(courses);
+                return _mapper.Map<List<ViewModels.Course>>(courses);
             }
         }
 
-        public Course GetOne(int id)
+        public ViewModels.Course GetOne(int id)
         {
             using (var db = new UniversityContext())
             {
                 var courses = db.Courses.Where(c => c.CourseId == id).FirstOrDefault();
 
-                return _mapper.Map<Course>(courses);
+                return _mapper.Map<ViewModels.Course>(courses);
             }
         }
 
-        public void Edit(Course course)
+        public void Edit(ViewModels.Course course)
         {
             using (var db = new UniversityContext())
             {               
-                    db.Entry(course).State = EntityState.Modified;
+                    db.Entry(_mapper.Map<Course>(course)).State = EntityState.Modified;
                     db.SaveChanges();
             }
         }
 
-        public void Delete(Course course)
+        public void Delete(ViewModels.Course course)
         {
             using (var db = new UniversityContext())
             {
-                db.Entry(course).State = EntityState.Deleted;
+                db.Entry(_mapper.Map<Course>(course)).State = EntityState.Deleted;
                 db.SaveChanges();
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using WebApplication.Infrastructure;
+using WebApplication.ViewModels;
 
 namespace WebApplication.Controllers
 {
@@ -25,6 +26,24 @@ namespace WebApplication.Controllers
             var groups = _service.Details(id);
 
             return View(groups);
+        }
+
+        [HttpGet]
+        public ActionResult CreateCourse()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateCourse(Course course)
+        {
+            if (ModelState.IsValid)
+            {
+                _service.Create(course);
+
+                return RedirectToAction("Courses");
+            }
+
+            return View();
         }
     }
 }

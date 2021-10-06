@@ -7,7 +7,8 @@ namespace WebApplication
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                "~/Scripts/jqery.validate*"));
         }
     }
 }

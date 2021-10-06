@@ -186,6 +186,19 @@
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -206,6 +219,9 @@
     <Content Include="Views\Group\DeleteGroupError.cshtml" />
     <Content Include="Views\Student\Students.cshtml" />
     <Content Include="Views\Student\EditStudent.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Views\Course\CreateCourse.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -227,6 +243,10 @@
     <ProjectReference Include="..\WebApplication.Repository\WebApplication.Repository.csproj">
       <Project>{cf9377b5-0c56-441f-94f1-2e8d1aae7b80}</Project>
       <Name>WebApplication.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApplication.ViewModels\WebApplication.ViewModels.csproj">
+      <Project>{e8c966f4-2f22-433c-b1c6-7964da2304fe}</Project>
+      <Name>WebApplication.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

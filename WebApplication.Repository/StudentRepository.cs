@@ -7,7 +7,7 @@ using WebApplication.Infrastructure;
 
 namespace WebApplication.Repository
 {
-    public class StudentRepository : IRepository<Student>
+    public class StudentRepository : IRepository<ViewModels.Student>
     {
         private readonly IMapper _mapper;
 
@@ -16,59 +16,59 @@ namespace WebApplication.Repository
             _mapper = mapper;
         }
 
-        public void Create(Student student)
+        public void Create(ViewModels.Student student)
         {
             using (var db = new UniversityContext())
             {
-                db.Students.Add((Student)student);
+                db.Students.Add(_mapper.Map<Student>(student));
                 db.SaveChanges();
             }
         }
 
-        public List<Student> Get()
+        public List<ViewModels.Student> Get()
         {
             using (var db = new UniversityContext())
             {
                 var students = db.Students.Include(g => g.Group).OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName).ToList();
 
-                return _mapper.Map<List<Student>>(students);
+                return _mapper.Map<List<ViewModels.Student>>(students);
             }
         }
 
-        public List<Student> Get(int id)
+        public List<ViewModels.Student> Get(int id)
         {
             using (var db = new UniversityContext())
             {
                 var students = db.Students.Include(g => g.Group).Where(g => g.GroupId == id).OrderBy(g => g.Group.Name).ThenBy(s => s.FirstName);
 
-                return _mapper.Map<List<Student>>(students);
+                return _mapper.Map<List<ViewModels.Student>>(students);
             }
         } 
         
-        public Student GetOne(int id)
+        public ViewModels.Student GetOne(int id)
         {
             using (var db = new UniversityContext())
             {
                 var students = db.Students.Include(g => g.Group).Where(s => s.StudentId == id).FirstOrDefault();
 
-                return _mapper.Map<Student>(students);
+                return _mapper.Map<ViewModels.Student>(students);
             }
         }
 
-        public void Edit(Student student)
+        public void Edit(ViewModels.Student student)
         {
             using (var db = new UniversityContext())
             {              
-                db.Entry(student).State = EntityState.Modified;
+                db.Entry(_mapper.Map<Student>(student)).State = EntityState.Modified;
                 db.SaveChanges();
             }
         }
 
-        public void Delete(Student student)
+        public void Delete(ViewModels.Student student)
         {
             using (var db = new UniversityContext())
             {
-                db.Entry(student).State = EntityState.Deleted;
+                db.Entry(_mapper.Map<Student>(student)).State = EntityState.Deleted;
                 db.SaveChanges();
             }
         }

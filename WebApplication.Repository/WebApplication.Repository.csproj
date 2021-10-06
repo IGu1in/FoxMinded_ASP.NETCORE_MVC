@@ -119,9 +119,6 @@
   <ItemGroup>
     <Compile Include="CourseRepository.cs" />
     <Compile Include="GroupRepository.cs" />
-    <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\Student.cs" />
     <Compile Include="Profiles\DomainToSqlProfile.cs" />
     <Compile Include="Profiles\SqlToDomainProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,6 +132,10 @@
     <ProjectReference Include="..\WebApplication.Models\WebApplication.Models.csproj">
       <Project>{dbd9a168-309d-44fa-9051-35883dc4efd4}</Project>
       <Name>WebApplication.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApplication.ViewModels\WebApplication.ViewModels.csproj">
+      <Project>{e8c966f4-2f22-433c-b1c6-7964da2304fe}</Project>
+      <Name>WebApplication.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

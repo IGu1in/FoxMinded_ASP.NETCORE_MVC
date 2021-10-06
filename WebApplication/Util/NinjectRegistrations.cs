@@ -15,9 +15,9 @@ namespace WebApplication.Util
             Bind<ICourseService>().To<CourseService>();
             Bind<IGroupService>().To<GroupService>();
             Bind<IStudentService>().To<StudentService>();
-            Bind<IRepository<Course>>().To<CourseRepository>();
-            Bind<IRepository<Group>>().To<GroupRepository>();
-            Bind<IRepository<Student>>().To<StudentRepository>();
+            Bind<IRepository<ViewModels.Course>>().To<CourseRepository>();
+            Bind<IRepository<ViewModels.Group>>().To<GroupRepository>();
+            Bind<IRepository<ViewModels.Student>>().To<StudentRepository>();
 
             var mapperConfiguration = new MapperConfiguration(cfg =>
             {

@@ -59,6 +59,10 @@
       <Project>{cf9377b5-0c56-441f-94f1-2e8d1aae7b80}</Project>
       <Name>WebApplication.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebApplication.ViewModels\WebApplication.ViewModels.csproj">
+      <Project>{e8c966f4-2f22-433c-b1c6-7964da2304fe}</Project>
+      <Name>WebApplication.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

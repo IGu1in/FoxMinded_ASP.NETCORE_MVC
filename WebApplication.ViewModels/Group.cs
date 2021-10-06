@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication.Repository.Models
+namespace WebApplication.ViewModels
 {
     public class Group
     {
@@ -12,6 +12,7 @@ namespace WebApplication.Repository.Models
         public Course Course { get; set; }
 
         [RegularExpression(@"[A-Za-z\d-]+", ErrorMessage = "The name can contain only Latin letters or digits")]
+        [StringLength(7, ErrorMessage = "The maximum length is 25 characters")]
         public string Name { get; set; }
 
         public ICollection<Student> Students { get; set; }

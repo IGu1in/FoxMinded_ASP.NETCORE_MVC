@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using WebApplication.Models;
 using WebApplication.Infrastructure;
+using WebApplication.ViewModels;
+
 
 namespace WebApplication.Application
 {
@@ -25,6 +26,11 @@ namespace WebApplication.Application
             var groups = _repositoryGroup.Get(id);
 
             return groups;
+        }
+
+        public void Create(Course course)
+        {
+            _repository.Create(course);
         }
     }
 }

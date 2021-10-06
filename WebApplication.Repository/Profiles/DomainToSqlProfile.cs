@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using WebApplication.Repository.Models;
 
 namespace WebApplication.Repository.Profiles
 {
@@ -7,11 +6,11 @@ namespace WebApplication.Repository.Profiles
     {
         public DomainToSqlProfile()
         {
-            CreateMap<WebApplication.Models.Course, Course>()
+            CreateMap<WebApplication.Models.Course, ViewModels.Course>()
                 .ForMember(x => x.Groups, y => y.MapFrom(z => z.Groups));
-            CreateMap<WebApplication.Models.Group, Group>()
+            CreateMap<WebApplication.Models.Group, ViewModels.Group>()
                 .ForMember(x => x.Students, y => y.MapFrom(z => z.Students)); 
-            CreateMap<WebApplication.Models.Student, Student>();
+            CreateMap<WebApplication.Models.Student, ViewModels.Student>();
         }
     }
 }

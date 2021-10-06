@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication.Models.Course>
+﻿@model IEnumerable<WebApplication.ViewModels.Course>
 
 @{
     ViewBag.Title = "Courses";
@@ -34,3 +34,5 @@
     }
 
 </table>
+
+@Html.ActionLink("Create", "CreateCourse")
